@@ -1,7 +1,6 @@
 package com.andre_fernando.pockettrivia.ui;
 
 
-import android.app.ActivityOptions;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.DialogInterface;

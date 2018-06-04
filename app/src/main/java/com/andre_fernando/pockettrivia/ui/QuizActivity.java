@@ -1,6 +1,5 @@
 package com.andre_fernando.pockettrivia.ui;
 
-import android.app.ActivityOptions;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
