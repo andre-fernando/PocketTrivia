@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.QuizActivity"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    android:background="@color/backgroundColor">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+
+        <!--Main Quiz Layout-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/quiz_layout"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <!--Scoreboard Layout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_curved_bottom_corners"
+                android:backgroundTint="@color/secondaryColor"
+                android:backgroundTintMode="src_atop"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:orientation="horizontal"
+                android:elevation="@dimen/cardview_default_elevation">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/tv_total_question"
+                    tools:text="6/10"
+                    style="@style/FormText.Small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:drawableTop="@drawable/ic_format_list_numbered_black_24dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/tv_score"
+                    style="@style/FormText.Small"
+                    tools:text="4"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:drawableTop="@drawable/ic_grade_black_24dp"/>
+
+                <Chronometer
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/ch_timer"
+                    style="@style/FormText.Small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:drawableTop="@drawable/ic_timer_black_24dp"/>
+
+            </LinearLayout>
+
+            <!--End of Scoreboard Layout-->
+
+           <FrameLayout
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1">
+
+                <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/quiz_frame"
+                    android:visibility="gone" />
+
+               <ImageView
+                   android:layout_width="150dp"
+                   android:layout_height="150dp"
+                   android:layout_gravity="center"
+                   android:id="@+id/av_loading_screen"
+                   android:contentDescription="@string/cd_opentdb_logo"
+                   android:src="@drawable/pocket_trivia_loading_screen"
+               />
+
+
+           </FrameLayout>
+
+
+        </LinearLayout>
+
+        <!--End of Main Quiz Layout-->
+
+    </FrameLayout>
+</LinearLayout>

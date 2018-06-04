@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bt_remote_option"
+    android:paddingTop="@dimen/margin_small"
+    android:paddingBottom="@dimen/margin_small"
+    android:textAlignment="center"
+    style="@style/FormText"
+    android:layout_marginTop="@dimen/margin_small"
+    android:background="@drawable/border_sharp_corners"/>

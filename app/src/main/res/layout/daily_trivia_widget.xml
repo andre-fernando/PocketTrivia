@@ -1,0 +1,218 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/widget_background"
+    android:padding="@dimen/widget_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_small"
+        android:background="@drawable/stitched_border"
+        android:padding="@dimen/margin_medium">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:src="@drawable/ic_pocket_trivia_header_logo"
+            android:contentDescription="@string/cd_header_image"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_medium"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:id="@+id/tv_daily_trivia"
+            android:text="@string/daily_trivia" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_widget_question"
+            tools:text="This is a very long question, it is a really long question, how long question it is?"
+            android:textAlignment="center"
+            android:textSize="@dimen/form_text_size"
+            android:layout_gravity="center"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!--This is for Multiple Choice -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layout_multiple_options_widget"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:padding="@dimen/margin_medium"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="@dimen/margin_medium">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_sharp_corners"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:paddingTop="@dimen/margin_extra_small"
+                    android:paddingBottom="@dimen/margin_extra_small"
+                    android:id="@+id/bt_option1_widget"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_sharp_corners"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:paddingTop="@dimen/margin_extra_small"
+                    android:paddingBottom="@dimen/margin_extra_small"
+                    android:id="@+id/bt_option2_widget"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_sharp_corners"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:paddingTop="@dimen/margin_extra_small"
+                    android:paddingBottom="@dimen/margin_extra_small"
+                    android:id="@+id/bt_option3_widget"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_sharp_corners"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:paddingEnd="@dimen/margin_medium"
+                    android:paddingTop="@dimen/margin_extra_small"
+                    android:paddingBottom="@dimen/margin_extra_small"
+                    android:id="@+id/bt_option4_widget"/>
+
+            </LinearLayout>
+
+            <!--For Multiple Choice with a list view-->
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_options_widget"
+                android:visibility="gone"/>
+
+            <!--This is for True or False-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layoutBooleanWidget"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/boolean_option_true"
+                    android:id="@+id/bt_true_widget"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:background="@drawable/border_sharp_corners"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/boolean_option_False"
+                    android:id="@+id/bt_false_widget"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:background="@drawable/border_sharp_corners"/>
+
+            </LinearLayout>
+
+            <!--Result view-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/layoutAnswerWidget"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:id="@+id/tv_answer_header_widget"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    tools:text="Correct"
+                    style="@style/FormText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:text="@string/the_answer_is"
+                    style="@style/FormText.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="The Answer"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:id="@+id/tv_correct_answer_widget"
+                    style="@style/FormText.Small"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:id="@+id/tv_your_answer_is_widget"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/your_answer_was"
+                    style="@style/FormText"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    tools:text="Your Answer"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/margin_extra_small"
+                    android:id="@+id/tv_user_selection_widget"
+                    style="@style/FormText"/>
+
+
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:src="@drawable/ic_pocket_trivia_footer"
+            android:contentDescription="@string/cd_footer_image"
+            android:scaleType="fitCenter"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

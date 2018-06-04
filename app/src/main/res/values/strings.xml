@@ -1,0 +1,160 @@
+<resources>
+    <!--App Strings-->
+    <string name="app_name">Pocket Trivia</string>
+
+    <!--region Notification Strings-->
+
+    <string name="pocket_trivia_notification_channel_id">Pocket Trivia Notification Id Main</string>
+    <string name="daily_trivia_notification_name">Daily Trivia Notification</string>
+    <string name="daily_trivia_notification_description">
+        This is the notifications for when you
+        get a new daily trivia question.</string>
+
+    <string name="notification_title">New Daily Trivia</string>
+    <string name="notification_text">There is a new Daily Trivia question available to test your knowledge.</string>
+    <!--endregion Notification Strings-->
+
+    <!-- region Start Quiz Fragment  -->
+    <string name="quantity">Quantity</string>
+    <string-array name="sp_number_questions">
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+    </string-array>
+
+    <string name="category">Category:</string>
+    <string-array name="category_names">
+        <item>Any</item>
+        <item>General Knowledge</item>
+        <item>Entertainment: Books</item>
+        <item>Entertainment: Film</item>
+        <item>Entertainment: Music</item>
+        <item>Entertainment: Musicals &#38; Theatres</item>
+        <item>Entertainment: Television</item>
+        <item>Entertainment: Video Games</item>
+        <item>Entertainment: Board Games</item>
+        <item>Science &#38; Nature</item>
+        <item>Science: Computers</item>
+        <item>Science: Mathematics</item>
+        <item>Mythology</item>
+        <item>Sports</item>
+        <item>Geography</item>
+        <item>History</item>
+        <item>Politics</item>
+        <item>Art</item>
+        <item>Celebrities</item>
+        <item>Animals</item>
+        <item>Vehicles</item>
+        <item>Entertainment: Comics</item>
+        <item>Science: Gadgets</item>
+        <item>Entertainment: Japanese Anime &#38; Manga</item>
+        <item>Entertainment: Cartoon &#38; Animations</item>
+    </string-array>
+
+    <string name="difficulty">Difficulty:</string>
+    <string-array name="difficulties">
+        <item>Any</item>
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string name="type">Type:</string>
+    <string-array name="types">
+        <item>Any</item>
+        <item>Multiple</item>
+        <item>Boolean</item>
+    </string-array>
+
+    <string name="start_quiz">Start Quiz</string>
+
+    <!--endregion END of Start Quiz Fragment  -->
+
+    <!--region Question Fragment Strings-->
+    <string name="daily_trivia">Daily Trivia</string>
+    <string name="boolean_option_true">True</string>
+    <string name="boolean_option_False">False</string>
+    <string name="the_answer_is">The answer is</string>
+    <string name="your_answer_was">Your answer was</string>
+    <string name="correct_heading">Correct</string>
+    <string name="wrong_heading">Wrong</string>
+
+    <!--endregion End of Question Fragment Strings-->
+
+    <!--region Overview Fragment Strings-->
+    <string name="congratulations">Congratulations</string>
+    <string name="score">Score:</string>
+    <string name="time">Time:</string>
+    <string name="total_questions">Total Questions:</string>
+    <string name="save_score">Save Score</string>
+    <string name="edit_text_hint">Enter your name</string>
+    <!--endregion End of Overview Fragment-->
+
+    <!--region Results Fragment Strings-->
+    <string name="results_label_name">Name</string>
+    <string name="high_scores">High Scores</string>
+    <string name="results_time_label">Time</string>
+    <string name="results_score_label">Score</string>
+    <string name="rv_label_date">Date:</string>
+
+
+    <!--endregion End of Results Fragment Strings-->
+
+    <!--region Sign In Fragment-->
+    <string name="enter_username">Enter Username:</string>
+    <string name="bt_save">Save</string>
+    <string name="log_out">Log Out</string>
+    <string name="menu_start_quiz">Start Quiz</string>
+    <string name="menu_sign_in">Sign In</string>
+    <string name="menu_results">Results</string>
+    <string name="menu_about">About</string>
+    <string name="menu_clear_data">Clear Data</string>
+    <string name="gdpr_notice">
+        Notice:\n
+        This app does not collect any personal data in the cloud, it asks for a username for
+        the high scores and that username is encrypted and stored on the internal storage of
+        the device.
+    </string>
+
+    <!--endregion End of Sign In Fragment-->
+
+    <!--region About Fragment-->
+    <string name="about_body">
+        Pocket Trivia is a Trivia app which gets questions from the Open Trivia Database and presents
+        it in an easy to use interface. This project was done for the purpose of showcasing my knowledge
+        of android development.
+    </string>
+
+    <string name="created_by_n_andre_fernando">Created by:  \nAndre Fernando</string>
+
+    <!--endregion About Fragment-->
+
+    <!--region Content Descriptions for Images-->
+
+    <string name="cd_header_image">Header logo of the Packet Trivia App</string>
+    <string name="cd_footer_image">A decorative footer image.</string>
+    <string name="cd_logo">Pocket Trivia logo, it consists of a pinkish red background in the shape of a pocket and in the center the alphabet P sits which is made up of an alphabet T and a question mark.</string>
+    <string name="cd_dropdown_details">This button expands or collapses the detail view of the high score.</string>
+    <string name="cd_opentdb_logo">The open trivia database logo, onclick will open the website </string>
+    <string name="cd_github_logo">The github logo, onclick leads to Andre Fernando\'s github profile.</string>
+
+    <!--endregion End of Content Descriptions-->
+
+    <!--region Alert Dialogs-->
+
+    <string name="ad_confirm_exit_title">Confirm Exit</string>
+    <string name="ad_confirm_exit_message">Are you sure you want to exit the Quiz? All progress of the quiz will be lost.</string>
+    <string name="ad_exit_bt">Exit</string>
+    <string name="ad_Continue_bt">Continue</string>
+
+    <string name="ad_confirm_clear_data_title">Confirm Clear Data</string>
+    <string name="ad_confirm_clear_data_message">Are you sure you want to clear all personal data?</string>
+    <string name="ad_clear_data_bt">Clear Data</string>
+    <string name="ad_dismiss_bt">Keep Data</string>
+
+    <!--endregion Alert Dialogs-->
+
+</resources>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.QuestionFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        android:layout_margin="@dimen/margin_medium"
+        android:id="@+id/card_question_fragment"
+        android:padding="@dimen/margin_small"
+        android:backgroundTint="@color/secondaryColor">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/stitched_border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Entertainment: Music"
+                    android:maxWidth="200dp"
+                    android:minWidth="100dp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:paddingStart="@dimen/margin_large"
+                    android:paddingEnd="@dimen/margin_large"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:background="@drawable/border_curved_bottom_corners"
+                    android:id="@+id/tv_category"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:src="@drawable/ic_pocket_trivia_header_logo"
+                    android:contentDescription="@string/cd_header_image"
+                    android:scaleType="fitCenter"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    style="@style/Base.TextAppearance.AppCompat.Headline"
+                    android:id="@+id/tv_daily_trivia"
+                    android:text="@string/daily_trivia"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:id="@+id/tv_question"
+                    tools:text="Which band is the longest active band in the world with no breaks or line-up changes?"
+                    android:layout_margin="20dp"
+                    android:textSize="24sp"/>
+
+                <!--The next layout will change between multiple choice questions
+                    , boolean questions and the solution-->
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/choiceFrame"
+                    android:layout_marginBottom="20dp"
+                    android:animateLayoutChanges="true">
+
+                    <!--This is for multiple choice questions-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/layoutMultipleChoice"
+                        android:layout_gravity="center"
+                        android:paddingStart="25dp"
+                        android:paddingEnd="25dp"
+                        android:visibility="gone">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bt_option1"
+                            tools:text="RadioHead"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border_sharp_corners"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bt_option2"
+                            tools:text="U2"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border_sharp_corners"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bt_option3"
+                            tools:text="Rush"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border_sharp_corners"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/bt_option4"
+                            tools:text="Rolling Stones"
+                            android:layout_gravity="center"
+                            android:background="@drawable/border_sharp_corners"/>
+
+
+                    </LinearLayout>
+
+
+                    <!--This is for True or False-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/layoutBoolean"
+                        android:layout_gravity="center"
+                        android:visibility="gone">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/boolean_option_true"
+                            android:id="@+id/bt_true"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginEnd="@dimen/margin_large"
+                            android:background="@drawable/border_sharp_corners"/>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/boolean_option_False"
+                            android:id="@+id/bt_false"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginEnd="@dimen/margin_large"
+                            android:background="@drawable/border_sharp_corners"/>
+
+                    </LinearLayout>
+
+                    <!--Result view-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:id="@+id/layoutAnswer"
+                        android:layout_gravity="center"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:id="@+id/tv_answer_header"
+                            android:layout_marginTop="@dimen/margin_small"
+                            tools:text="Correct"
+                            style="@style/Base.TextAppearance.AppCompat.Headline" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:text="@string/the_answer_is"
+                            style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            tools:text="The Answer"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:id="@+id/tv_correct_answer"
+                            style="@style/Base.TextAppearance.AppCompat.Headline"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:id="@+id/tv_your_answer_is"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:text="@string/your_answer_was"
+                            style="@style/Base.TextAppearance.AppCompat.Subhead"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            tools:text="Your Answer"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:id="@+id/tv_user_selection"
+                            style="@style/Base.TextAppearance.AppCompat.Headline"/>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:src="@drawable/ic_pocket_trivia_footer"
+                    android:contentDescription="@string/cd_footer_image"
+                    android:scaleType="fitCenter"
+                    android:layout_marginBottom="@dimen/margin_large"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

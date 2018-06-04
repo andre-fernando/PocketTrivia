@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/m_start_quiz"
+        android:title="@string/menu_start_quiz"/>
+    <item android:id="@+id/m_sign_in"
+        android:title="@string/menu_sign_in"/>
+    <item android:id="@+id/m_results"
+        android:title="@string/menu_results"/>
+    <item android:id="@+id/m_clear_data"
+        android:title="@string/menu_clear_data"/>
+    <item android:id="@+id/m_about"
+        android:title="@string/menu_about"/>
+</menu>
