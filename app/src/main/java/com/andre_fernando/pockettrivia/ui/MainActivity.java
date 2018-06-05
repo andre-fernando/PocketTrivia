@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //Setup the add
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544/6300978111");
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544/6300978111"); //NON-NLS
         AdView adBanner= findViewById(R.id.ad_banner);
         AdRequest adRequest = new AdRequest.Builder().build();
         adBanner.loadAd(adRequest);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity
             if (NetworkCheck.isConnected(this)){
                 getSupportLoaderManager().restartLoader(19, null, this).forceLoad();
             }else {
-                Toast.makeText(this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
             }
             DailyTriviaJobDispatcher.init(this);
         } else {//if already initialized we can get the question from the shared preference
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity
                             public void onClick(DialogInterface dialog, int which) {
                                 if (helper.isLoggedIn()) helper.removeUsername();
                                 new DbHelper(MainActivity.this).removeAllResults();
-                                Toast.makeText(MainActivity.this, "All data cleared.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, R.string.all_data_cleared, Toast.LENGTH_SHORT).show();
                             }
                         })
                         .create()
@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity
         if (NetworkCheck.isConnected(this)){
             startActivity(intent);
         }else {
-            Toast.makeText(this, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
         }
     }
 

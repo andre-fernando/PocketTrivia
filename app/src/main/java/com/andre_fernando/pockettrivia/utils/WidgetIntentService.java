@@ -16,6 +16,7 @@ import com.andre_fernando.pockettrivia.ui.DailyTriviaWidget;
  * This is an Intent Service that handles click events from the
  * daily trivia widget.
  */
+@SuppressWarnings("HardCodedStringLiteral")
 public class WidgetIntentService extends IntentService {
 
     public static final String ACTION_CHECK_MULTIPLE = "check option" ;

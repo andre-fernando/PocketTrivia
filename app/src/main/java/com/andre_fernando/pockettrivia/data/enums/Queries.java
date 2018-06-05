@@ -5,7 +5,7 @@ import android.support.annotation.StringDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "HardCodedStringLiteral"})
 public class Queries {
     public static final String Amount = "amount";
     public static final String Category = "category";

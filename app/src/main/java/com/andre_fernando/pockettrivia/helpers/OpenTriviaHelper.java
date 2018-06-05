@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.andre_fernando.pockettrivia.R;
 import com.andre_fernando.pockettrivia.data.enums.JsonTags;
 import com.andre_fernando.pockettrivia.data.enums.Queries;
 import com.andre_fernando.pockettrivia.data.objects.Question;
@@ -28,6 +29,7 @@ public class OpenTriviaHelper {
 
     private final Context context;
 
+    @SuppressWarnings("HardCodedStringLiteral")
     public static final String dailyTriviaUrl = "https://opentdb.com/api.php?amount=1";
 
 
@@ -42,8 +44,9 @@ public class OpenTriviaHelper {
         return parseJson(jsonString);
     }
 
+    @SuppressWarnings("HardCodedStringLiteral")
     public String getAssembledURL(String number_of_questions, int categoryId,
-                               String difficulty, String type){
+                                  String difficulty, String type){
         String BASE_URL = "https://opentdb.com/api.php";
         Uri.Builder builder = Uri.parse(BASE_URL).buildUpon();
 
@@ -78,6 +81,7 @@ public class OpenTriviaHelper {
      * @param UrlString URL to request
      * @return a json String containing the Trivia.
      */
+    @SuppressWarnings("HardCodedStringLiteral")
     private String fetchJson(String UrlString){
         HttpURLConnection urlConnection;
         String jsonStringResponse;
@@ -95,6 +99,7 @@ public class OpenTriviaHelper {
             return jsonStringResponse;
         } catch (IOException e) {
             e.printStackTrace();
+            //noinspection HardCodedStringLiteral
             Log.e(OpenTriviaHelper.class.getSimpleName(), "fetchJson: Failed to fetch Json!");
             return null;
         }
@@ -102,6 +107,7 @@ public class OpenTriviaHelper {
 
     private ArrayList<Question> parseJson(String jsonString){
         if (jsonString == null){
+            //noinspection HardCodedStringLiteral
             Log.e(OpenTriviaHelper.class.getSimpleName(), "parseJson: Received String is null");
             return new ArrayList<>();
         }
@@ -121,6 +127,7 @@ public class OpenTriviaHelper {
             return toReturn;
         } catch (JSONException e){
             e.printStackTrace();
+            //noinspection HardCodedStringLiteral
             Log.e(OpenTriviaHelper.class.getSimpleName(), "parseJson: Failed to parse Json");
             return null;
         }
@@ -128,12 +135,12 @@ public class OpenTriviaHelper {
 
     private void handleResponseCodeError(int responseCode){
         if (responseCode == 1){
-            Toast.makeText(context, "No results available!", Toast.LENGTH_SHORT).show();
-            Log.w(this.getClass().getSimpleName(), "Response code 1: No results found.");
+            Toast.makeText(context, R.string.no_results_available, Toast.LENGTH_SHORT).show();
+            Log.w(this.getClass().getSimpleName(), "Response code 1: No results found."); //NON-NLS
         }else {
-            Toast.makeText(context, "Oops something went wrong, please contact the developer."
+            Toast.makeText(context, R.string.oops_something_went_wrong
                     , Toast.LENGTH_SHORT).show();
-            Log.e(this.getClass().getSimpleName(),"Unsupported response code: "+responseCode);
+            Log.e(this.getClass().getSimpleName(),"Unsupported response code: "+responseCode); //NON-NLS
         }
     }
 

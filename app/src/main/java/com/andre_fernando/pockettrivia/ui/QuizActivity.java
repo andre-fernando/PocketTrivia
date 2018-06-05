@@ -153,6 +153,7 @@ public class QuizActivity extends AppCompatActivity
 
     private String getDate(){
         Date today = Calendar.getInstance().getTime();
+        //noinspection HardCodedStringLiteral
         SimpleDateFormat formatter = new SimpleDateFormat("EEE dd MMM yyyy", Locale.UK);
         return formatter.format(today);
     }
@@ -266,7 +267,7 @@ public class QuizActivity extends AppCompatActivity
             quizPagerView.setVisibility(View.VISIBLE);
 
         } else {
-            Toast.makeText(this, "Server is offline please try again later.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.server_is_offline, Toast.LENGTH_SHORT).show();
         }
     }
 

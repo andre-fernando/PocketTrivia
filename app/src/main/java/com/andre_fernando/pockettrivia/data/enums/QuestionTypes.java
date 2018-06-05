@@ -5,7 +5,7 @@ import android.support.annotation.StringDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "HardCodedStringLiteral"})
 public class QuestionTypes {
     //TypeDef for Type
     public static final String Any = "any";

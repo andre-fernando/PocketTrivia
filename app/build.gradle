@@ -2,16 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        config {
-            keyAlias 'PocketTrivia'
-            storeFile file('/home/draiden/Documents/Software/KeyStore/AndroidKeyStore.jks')
-            storePassword 'dpassword'
-            keyPassword 'pocketpass'
-        }
         PocketTriviaKeystoreTemp {
             keyAlias 'pockettrivia'
             keyPassword 'udacity'
-            storeFile file('/home/draiden/Documents/Software/KeyStore/PocketTriviaKeyStore.jks')
+            storeFile file(rootProject.file('keystore/PocketTriviaKeyStore.jks'))
             storePassword 'udacity'
         }
     }
@@ -58,7 +52,6 @@ dependencies {
     //Jsoup for Html Parsing
     implementation 'org.jsoup:jsoup:1.11.3'
     //Firebase Job Dispatcher
-    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
     implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
     //Google Sign In
     implementation 'com.google.android.gms:play-services-auth:15.0.1'

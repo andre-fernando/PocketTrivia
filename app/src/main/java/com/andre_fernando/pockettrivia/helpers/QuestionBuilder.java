@@ -44,7 +44,7 @@ class QuestionBuilder {
             }
         } catch (JSONException e) {
             e.printStackTrace();
-            Log.e(QuestionBuilder.class.getSimpleName(), "build: "+"failed to build question!:" + e.getMessage());
+            Log.e(QuestionBuilder.class.getSimpleName(), "build: "+"failed to build question!:" + e.getMessage()); //NON-NLS
             return null;
         }
     }

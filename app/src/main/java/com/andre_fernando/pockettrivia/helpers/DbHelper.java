@@ -56,7 +56,7 @@ public class DbHelper {
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
             Log.e(DbHelper.class.getSimpleName(),
-                    "getAllResults: Failed to procure high scores");
+                    "getAllResults: Failed to procure high scores"); //NON-NLS
             return new ArrayList<>();
         }
     }

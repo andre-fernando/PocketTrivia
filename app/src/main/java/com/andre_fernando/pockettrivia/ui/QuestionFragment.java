@@ -143,7 +143,8 @@ public class QuestionFragment extends Fragment {
 
     private void initAnsweredQuestion(){
         initBasicInfo();
-        String heading = question.isCorrect() ? "Correct": "Wrong";
+        String heading = question.isCorrect() ?
+                getString(R.string.correct_heading): getString(R.string.wrong_heading);
         tv_answerHeader.setText(heading);
         if (question.isMultiple()){
             tv_correctAnswer.setText(((MultipleChoiceQuestion) question).getAnswerMultiple());

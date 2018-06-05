@@ -91,6 +91,8 @@
     <string name="total_questions">Total Questions:</string>
     <string name="save_score">Save Score</string>
     <string name="edit_text_hint">Enter your name</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="user">User</string>
     <!--endregion End of Overview Fragment-->
 
     <!--region Results Fragment Strings-->
@@ -155,6 +157,15 @@
     <string name="ad_clear_data_bt">Clear Data</string>
     <string name="ad_dismiss_bt">Keep Data</string>
 
+
     <!--endregion Alert Dialogs-->
+
+    <!--region Toast Messages-->
+    <string name="no_results_available">No results available!</string>
+    <string name="oops_something_went_wrong">Oops something went wrong, please contact the developer.</string>
+    <string name="server_is_offline">Server is offline please try again later.</string>
+    <string name="no_internet_connection">No Internet Connection!</string>
+    <string name="all_data_cleared">All data cleared.</string>
+    <!--endregion Toast Messages-->
 
 </resources>

@@ -29,6 +29,7 @@ import ru.bullyboo.encoder.methods.AES;
  *
  *
  */
+@SuppressWarnings("HardCodedStringLiteral")
 public class SharedPreferenceHelper {
 
     private final SharedPreferences sharedPreferences;
@@ -93,7 +94,7 @@ public class SharedPreferenceHelper {
             return question;
         } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
-            Log.e(SharedPreferenceHelper.class.getSimpleName(), "fromJson: Conversion failed!"+e.getMessage());
+            Log.e(SharedPreferenceHelper.class.getSimpleName(), "fromJson: Conversion failed!"+e.getMessage());//NON-NLS
             return null;
         }
     }

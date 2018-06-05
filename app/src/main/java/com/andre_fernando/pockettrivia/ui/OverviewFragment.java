@@ -77,7 +77,7 @@ public class OverviewFragment extends Fragment {
         if (helper.isLoggedIn()){
             et_username.setText(helper.getUserName());
         } else {
-            et_username.setHint("Enter Name");
+            et_username.setHint(R.string.enter_name);
         }
 
     }
@@ -86,7 +86,7 @@ public class OverviewFragment extends Fragment {
     public void onClickSaveScore(){
         String name = et_username.getText().toString();
         if (name.length()<1){
-            name = "User";
+            name = getString(R.string.user);
         }
         listener.saveHighScore(name);
     }

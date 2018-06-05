@@ -36,7 +36,7 @@ public class AboutFragment extends Fragment {
         ib_github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/andre-fernando"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/andre-fernando")); //NON-NLS
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class AboutFragment extends Fragment {
         ib_opentdb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://opentdb.com/"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://opentdb.com/")); //NON-NLS
                 startActivity(intent);
             }
         });

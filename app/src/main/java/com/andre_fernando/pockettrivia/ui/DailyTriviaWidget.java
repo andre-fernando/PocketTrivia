@@ -45,7 +45,7 @@ public class DailyTriviaWidget extends AppWidgetProvider {
                     e.printStackTrace();
                 }
             }else {
-                Toast.makeText(context, "No Internet Connection!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
                 // Instruct the widget manager to update the widget
                 appWidgetManager.updateAppWidget(appWidgetId, views);
                 return;
@@ -76,7 +76,9 @@ public class DailyTriviaWidget extends AppWidgetProvider {
             views.setViewVisibility(R.id.lv_options_widget, View.GONE);
 
             //Shows if the user got the answer correct
-            String header = question.isCorrect() ? "Correct":"Wrong";
+            String header = question.isCorrect() ?
+                    context.getString(R.string.correct_heading):
+                    context.getString(R.string.wrong_heading);
             views.setTextViewText(R.id.tv_answer_header_widget,header);
 
             //Displays the correct answer

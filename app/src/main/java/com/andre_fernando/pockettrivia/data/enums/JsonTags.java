@@ -5,7 +5,7 @@ import android.support.annotation.StringDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "HardCodedStringLiteral"})
 public class JsonTags {
     public static final String ResponseCode = "response_code";
     public static final String Results = "results";
