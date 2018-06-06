@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -55,7 +56,7 @@ public class QuizActivity extends AppCompatActivity
 
     //region Class variables
     private String urlString, quizDifficulty, quizType;
-    private boolean isCompleted;
+    private boolean isCompleted,hasSavedInstance;
     private ArrayList<Question> quizQuestionList;
     private int totalQuestions, count_answeredQuestions, score, quizCategoryId;
     private CharSequence elapsedTime;
@@ -68,9 +69,21 @@ public class QuizActivity extends AppCompatActivity
     @BindView(R.id.tv_score)TextView tv_score;
     @BindView(R.id.ch_timer) Chronometer ch_timer;
     @BindView(R.id.quiz_frame) ViewPager quizPagerView;
-    @BindView(R.id.av_loading_screen) ImageView animatedLoadingScreenView;
+    @BindView(R.id.av_loading_screen) ImageView LoadingScreenView;
 
     //endregion ButterKnife Binds
+
+    //region Keys Save Instance state
+    private final String key_quizCategoryId = "quiz category id";  //NON-NLS
+    private final String key_quizDifficulty = "quiz difficulty";  //NON-NLS
+    private final String key_quizType = "quiz type";  //NON-NLS
+    private final String key_isCompleted = "isCompleted";  //NON-NLS
+    private final String key_quizQuestionList = "quiz question list";  //NON-NLS
+    private final String key_count_answeredQuestions = "count of answered questions";  //NON-NLS
+    private final String key_score = "quiz score";  //NON-NLS
+    private final String key_timerBase = "base";  //NON-NLS
+    private final String key_pagerAdapterState = "pager adapter state"; //NON-NLS
+    //endregion Keys Save Instance state
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,25 +98,32 @@ public class QuizActivity extends AppCompatActivity
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //get data from intent
-        Intent received = getIntent();
-        urlString = received.getStringExtra(JsonTags.Results);
-        quizCategoryId = received.getIntExtra(Queries.Category,0);
-        quizDifficulty = toCamelCase(received.getStringExtra(Queries.Difficulty));
-        quizType = toCamelCase(received.getStringExtra(Queries.Type));
-
+        hasSavedInstance = savedInstanceState != null;
+        if (hasSavedInstance){
+            recoverInstanceState(savedInstanceState);
+        }else {
+            //get data from intent
+            Intent received = getIntent();
+            urlString = received.getStringExtra(JsonTags.Results);
+            quizCategoryId = received.getIntExtra(Queries.Category,0);
+            quizDifficulty = toCamelCase(received.getStringExtra(Queries.Difficulty));
+            quizType = toCamelCase(received.getStringExtra(Queries.Type));
+        }
     }
 
     //region Scoreboard Methods
 
-    private void initScoreboard(){
+    private void initScoreboard(int count ,int score,boolean isCompleted){
         totalQuestions=quizQuestionList.size();
-        count_answeredQuestions=0;
-        score=0;
+        count_answeredQuestions=count;
+        this.score=score;
         tv_countAnsweredQuestions.setText(getAnsweredCount());
         tv_score.setText(getScore());
-        ch_timer.start();
-        isCompleted = false;
+        if (!hasSavedInstance){//Runs only if not recovered
+            ch_timer.setBase(SystemClock.elapsedRealtime());
+            ch_timer.start();
+        }
+        this.isCompleted = isCompleted;
     }
 
     private void updateScoreboard(boolean isCorrect){
@@ -145,6 +165,7 @@ public class QuizActivity extends AppCompatActivity
             }
         },2000);
     }
+
 
     private String getCategoryName(){
         String[] categoryNames = this.getResources().getStringArray(R.array.category_names);
@@ -192,16 +213,10 @@ public class QuizActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        getSupportLoaderManager().restartLoader(16, null, this).forceLoad();
-
+        //Run only if not recovered
+        if (!hasSavedInstance) getSupportLoaderManager()
+                .restartLoader(16, null, this).forceLoad();
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (!isCompleted) ch_timer.stop();
-    }
-
 
     @Override
     public void onBackPressed() {
@@ -241,6 +256,50 @@ public class QuizActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        bundle.putInt(key_quizCategoryId,quizCategoryId);
+        bundle.putString(key_quizDifficulty,quizDifficulty);
+        bundle.putString(key_quizType,quizType);
+        bundle.putBoolean(key_isCompleted,isCompleted);
+        bundle.putParcelableArrayList(key_quizQuestionList,quizQuestionList);
+        bundle.putInt(key_count_answeredQuestions,count_answeredQuestions);
+        bundle.putInt(key_score,score);
+        ch_timer.stop();
+        long elapsed_time = SystemClock.elapsedRealtime()-ch_timer.getBase();
+        bundle.putLong(key_timerBase,elapsed_time);
+        bundle.putInt(key_pagerAdapterState,quizPagerView.getCurrentItem());
+        super.onSaveInstanceState(bundle);
+    }
+
+    private void recoverInstanceState(Bundle bundle){
+        quizCategoryId = bundle.getInt(key_quizCategoryId);
+        quizDifficulty = bundle.getString(key_quizDifficulty);
+        quizType = bundle.getString(key_quizType);
+        isCompleted = bundle.getBoolean(key_isCompleted);
+        quizQuestionList = bundle.getParcelableArrayList(key_quizQuestionList);
+        count_answeredQuestions =bundle.getInt(key_count_answeredQuestions);
+        score = bundle.getInt(key_score);
+        ch_timer.setBase(SystemClock.elapsedRealtime()-bundle.getLong(key_timerBase));
+        ch_timer.start();
+        int adapterPosition = bundle.getInt(key_pagerAdapterState);
+        if (isCompleted){//if complete shows OverviewPagerAdapter
+            OverviewPagerAdapter overviewPagerAdapter = new OverviewPagerAdapter(
+                    getSupportFragmentManager(),quizQuestionList,
+                    score,totalQuestions,elapsedTime);
+            quizPagerView.setAdapter(overviewPagerAdapter);
+        }else {// if not complete show QuizPagerAdapter
+            FragmentPagerAdapter quizPagerAdapter = new QuizPagerAdapter(getSupportFragmentManager(),
+                    quizQuestionList);
+            quizPagerView.setAdapter(quizPagerAdapter);
+        }
+        quizPagerView.setOffscreenPageLimit(2);
+        quizPagerView.setCurrentItem(adapterPosition);
+        initScoreboard(count_answeredQuestions,score,isCompleted);
+        LoadingScreenView.setVisibility(View.GONE);
+        quizPagerView.setVisibility(View.VISIBLE);
+    }
+
     //endregion Lifecycle Methods
 
     //region Loader Methods
@@ -257,13 +316,13 @@ public class QuizActivity extends AppCompatActivity
 
             quizQuestionList = data;
 
-            initScoreboard();
+            initScoreboard(0,0,false);
             FragmentPagerAdapter quizPagerAdapter = new QuizPagerAdapter(getSupportFragmentManager(),
                                                                         quizQuestionList);
             quizPagerView.setAdapter(quizPagerAdapter);
             quizPagerView.setOffscreenPageLimit(2);
 
-            animatedLoadingScreenView.setVisibility(View.GONE);
+            LoadingScreenView.setVisibility(View.GONE);
             quizPagerView.setVisibility(View.VISIBLE);
 
         } else {

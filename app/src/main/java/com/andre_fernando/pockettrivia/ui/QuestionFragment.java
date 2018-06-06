@@ -95,6 +95,12 @@ public class QuestionFragment extends Fragment {
         if (savedInstanceState == null){
             initFragment();
         }
+
+        //Load the details if state is recovered and is a child of QuizActivity
+        //noinspection InstanceofConcreteClass
+        if ((getActivity() instanceof QuizActivity) && (savedInstanceState != null)){
+            initFragment();
+        }
         return view;
     }
 
